@@ -1,15 +1,17 @@
-
-const {useState} = React;
-console.log(<exampleVideoData />, 'example');
-var VideoList = () => (
+// const {useState} = React;
+import VideoListEntry from './VideoListEntry.js';
+var VideoList = (props) => (
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+    {props.videos.map((videoItem) => (
+      <VideoListEntry video={videoItem} setCurrVideoFn={props.setCurrVideoFn}/>
+    ))}
   </div>
 );
+
+
+
+// console.log(VideoListEntry);
+
 
 
 //function VideList() {

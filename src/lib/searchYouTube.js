@@ -5,7 +5,32 @@ $.ajaxPrefilter(function (settings, _, jqXHR) {
 });
 
 var searchYouTube = (query, callback) => {
-  // TODO
+  $.ajax({
+    url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
+    type: 'GET',
+    data: {
+      q: query,
+      // type: 'video'
+    },
+    contentType: 'application/json',
+    success: callback,
+    error: function(error) {
+      console.error('youtube: Failed to fetch videos');
+    }
+  });
 };
 
 export default searchYouTube;
+
+// readAll: function(successCB, errorCB = null) {
+//   $.ajax({
+//     url: Parse.server,
+//     type: 'GET',
+//     data: { order: '-createdAt' },
+//     contentType: 'application/json',
+//     success: successCB,
+//     error: errorCB || function(error) {
+//       console.error('chatterbox: Failed to fetch messages', error);
+//     }
+//   });
+// }
